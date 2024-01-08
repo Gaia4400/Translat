@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora de Tradução</title>
+</head>
+<body>
+    <h2>Calculadora de Tradução</h2>
+
+    <form id="translationForm">
+        <label for="pages">Número de Páginas:</label>
+        <input type="number" id="pages" name="pages" required>
+
+        <label for="original">Documento Original:</label>
+        <input type="checkbox" id="original" name="original"> Original
+
+        <button type="button" onclick="calculatePrice()">Calcular Preço</button>
+
+        <h3>Resultado:</h3>
+        <p id="result"></p>
+    </form>
+
+    <script>
+        function calculatePrice() {
+            const pages = parseFloat(document.getElementById('pages').value);
+            const isOriginal = document.getElementById('original').checked;
+
+            const translationCost = 25 * pages;
+            const certificationCost = 15;
+
+            let totalPrice = translationCost + certificationCost;
+
+            if (!isOriginal) {
+                totalPrice += 15 * pages;
+            }
+
+            document.getElementById('result').innerText = `Preço Total: ${totalPrice}€`;
+        }
+    </script>
+</body>
+</html>
